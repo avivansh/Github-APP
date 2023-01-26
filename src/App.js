@@ -20,6 +20,8 @@ import SignIn from "./Pages/Signin";
 import SignOut from "./Pages/Signup";
 import PageNotFound from "./Pages/PageNotFound";
 import { UserContext } from "./Context/UserContext";
+import Footer from "./layout/footer";
+import Header from "./layout/header";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -27,12 +29,14 @@ const App = () => {
     <Router>
       <ToastContainer />
       <UserContext.Provider value={{ user, setUser }}>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignOut />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <Footer />
       </UserContext.Provider>
     </Router>
   );
